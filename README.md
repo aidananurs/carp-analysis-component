@@ -11,7 +11,7 @@ The analysis component can execute tasks of three types:
 - *One-Time task*: the analysis is performed in response to a request for analysis.
 
 *SchedledTaskService, EventTaskService, OneTimeTaskService* expose endpoints to create|start|stop|retrieve tasks. 
-Before creating a task, analysis scripts must be ready and run.
+Before creating a task, the analysis script must be ready and run.
 
 ## Usage
 The project needs to be incorporated as a library using Maven/Gradle similar to other [CARP Core components](https://github.com/cph-cachet/carp.core-kotlin/tree/develop).

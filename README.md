@@ -10,7 +10,7 @@ The analysis component can execute tasks of three types:
 - *Event-triggered task*: the analysis is performed upon the occurrence of a specific event.
 - *One-Time task*: the analysis is performed in response to a request for analysis.
 
-*SchedledTaskService, EventTaskService, OneTimeTaskService* classes expose endpoints to create|start|stop|retrieve tasks. 
+*SchedledTaskService, EventTaskService, OneTimeTaskService* expose endpoints to create|start|stop|retrieve tasks. 
 Before creating a task, analysis scripts must be ready and run.
 
 ## Usage

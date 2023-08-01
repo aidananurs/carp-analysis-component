@@ -1,8 +1,8 @@
-package dk.cachet.carp.webservices.analysis_lib.infrastructure
+package infrastructure
 
 import dk.cachet.carp.common.application.UUID
-import dk.cachet.carp.webservices.analysis_lib.application.AnalysisResult
-import dk.cachet.carp.webservices.analysis_lib.application.AnalysisResultsRepository
+import application.AnalysisResult
+import application.AnalysisResultsRepository
 import kotlinx.datetime.Instant
 
 class InMemoryAnalysisResultsResultsRepository: AnalysisResultsRepository {

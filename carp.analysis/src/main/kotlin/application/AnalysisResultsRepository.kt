@@ -1,7 +1,7 @@
-package dk.cachet.carp.webservices.analysis_lib.application
+package application
 
 import dk.cachet.carp.common.application.UUID
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.InMemoryAnalysisResultsResultsRepository
+import infrastructure.InMemoryAnalysisResultsResultsRepository
 import kotlinx.datetime.Instant
 
 

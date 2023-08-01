@@ -1,7 +1,7 @@
 package dk.cachet.carp.webservices.analysis_lib.domain
 
 import dk.cachet.carp.common.application.UUID
-import dk.cachet.carp.webservices.analysis_lib.application.TaskStatus
+import application.TaskStatus
 
 interface EventTaskRepository
 {

@@ -1,10 +1,11 @@
-package dk.cachet.carp.webservices.analysis_lib.infrastructure
+package infrastructure
 
 import dk.cachet.carp.common.application.UUID
 import dk.cachet.carp.common.application.services.ApplicationService
 import dk.cachet.carp.common.application.services.IntegrationEvent
 import dk.cachet.carp.webservices.analysis_lib.domain.Command
 import kotlinx.coroutines.runBlocking
+import kotlinx.datetime.Clock
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledFuture
@@ -32,13 +33,12 @@ object CommandProcessor
      * @param delay The period between subsequent executions of the task.
      * @param timeUnit The time unit used for initialDelay and delay.
      */
-    fun processScheduledTask(taskId: UUID, command: Command.Scheduled, initialDelay: Long, delay: Long, timeUnit: TimeUnit)
+    fun processScheduledTask(taskId: UUID, taskName:String, command: Command.Scheduled, initialDelay: Long, delay: Long, timeUnit: TimeUnit)
     {
-       val future = scheduledThreadPool.scheduleAtFixedRate( { runBlocking {
-          command.execute()
-           printStatus()
-       }}, initialDelay, delay, timeUnit)
-
+        val future = scheduledThreadPool.scheduleAtFixedRate( { runBlocking {
+            command.execute()
+            printStatus(taskName)
+        }}, initialDelay, delay, timeUnit)
         scheduledTasks[taskId.stringRepresentation] = future
     }
 
@@ -54,7 +54,7 @@ object CommandProcessor
 
     fun unsubscribeEventTask(taskId: UUID)
     {
-       //TODO There is no unsubscribe method in Core. Needs to be added
+        //TODO There is no unsubscribe method in Core. Needs to be added
     }
 
     /**
@@ -62,11 +62,11 @@ object CommandProcessor
      * @param command The event task command to execute.
      * @param event The integration event associated with the command.
      */
-   fun <TService : ApplicationService<TService, TEvent>, TEvent : IntegrationEvent<TService>> processEventTask(command: Command.Event, event: TEvent)
-   {
-       eventThreadPool.submit { runBlocking { command.execute(event, event.javaClass) } }
-   }
+    fun <TService : ApplicationService<TService, TEvent>, TEvent : IntegrationEvent<TService>> processEventTask(command: Command.Event, event: TEvent)
+    {
+        eventThreadPool.submit { runBlocking { command.execute(event, event.javaClass) } }
+    }
 
-    fun printStatus() = println("Scheduled task is running..")
+    private fun printStatus(taskName: String) = println("${Clock.System.now()} Scheduled task with name $taskName is running..")
 }
 

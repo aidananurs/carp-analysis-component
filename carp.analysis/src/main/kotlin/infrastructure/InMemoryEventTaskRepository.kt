@@ -1,8 +1,8 @@
-package dk.cachet.carp.webservices.analysis_lib.infrastructure
+package infrastructure
 
 import dk.cachet.carp.common.application.UUID
 import dk.cachet.carp.studies.application.StudyService
-import dk.cachet.carp.webservices.analysis_lib.application.TaskStatus
+import application.TaskStatus
 import dk.cachet.carp.webservices.analysis_lib.domain.EventTaskRepository
 import dk.cachet.carp.webservices.analysis_lib.domain.TaskSettings
 

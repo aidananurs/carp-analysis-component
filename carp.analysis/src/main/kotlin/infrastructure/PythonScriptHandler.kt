@@ -1,4 +1,4 @@
-package dk.cachet.carp.webservices.analysis_lib.infrastructure
+package infrastructure
 import kotlinx.coroutines.CompletableDeferred
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType

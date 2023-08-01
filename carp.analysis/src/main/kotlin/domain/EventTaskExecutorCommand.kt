@@ -3,11 +3,11 @@ package dk.cachet.carp.webservices.analysis_lib.domain
 import dk.cachet.carp.common.application.services.ApplicationService
 import dk.cachet.carp.common.application.services.IntegrationEvent
 import dk.cachet.carp.common.infrastructure.serialization.JSON
-import dk.cachet.carp.webservices.analysis_lib.application.AnalysisResultsService
+import application.AnalysisResultsService
 
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.ScriptRequestHandler
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.ScriptResult
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.zonedNow
+import infrastructure.ScriptRequestHandler
+import infrastructure.ScriptResult
+import infrastructure.zonedNow
 import kotlinx.datetime.Clock
 import kotlinx.serialization.InternalSerializationApi
 import kotlinx.serialization.serializer

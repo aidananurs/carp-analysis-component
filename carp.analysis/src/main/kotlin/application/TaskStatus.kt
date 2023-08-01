@@ -1,4 +1,4 @@
-package dk.cachet.carp.webservices.analysis_lib.application
+package application
 
 enum class TaskStatus
 {

@@ -1,14 +1,14 @@
-package dk.cachet.carp.webservices.analysis_lib.infrastructure
+package infrastructure
 
 import dk.cachet.carp.common.application.UUID
 import dk.cachet.carp.webservices.analysis_lib.domain.TaskSettings
-import dk.cachet.carp.webservices.analysis_lib.application.TaskStatus
+import application.TaskStatus
 import dk.cachet.carp.webservices.analysis_lib.domain.ScheduledTaskRepository
 import kotlinx.datetime.Instant
 
 class InMemoryScheduledTaskRepository: ScheduledTaskRepository {
 
-    private val taskMap = mutableMapOf<String, TaskSettings.Scheduled>()
+    val taskMap = mutableMapOf<String, TaskSettings.Scheduled>()
 
     override suspend fun saveTask(task: TaskSettings.Scheduled) {
         taskMap[task.id.stringRepresentation] = task

@@ -1,4 +1,4 @@
-package dk.cachet.carp.webservices.analysis_lib.infrastructure
+package infrastructure
 
 import java.util.concurrent.TimeUnit
 

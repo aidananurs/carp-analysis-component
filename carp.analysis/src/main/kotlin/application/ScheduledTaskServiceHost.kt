@@ -1,14 +1,14 @@
-package dk.cachet.carp.webservices.analysis_lib.application
+package application
 
 import dk.cachet.carp.common.application.DefaultUUIDFactory
 import dk.cachet.carp.common.application.UUID
 import dk.cachet.carp.common.application.UUIDFactory
 import dk.cachet.carp.webservices.analysis_lib.domain.*
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.CommandProcessor
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.ScriptRequestHandler
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.URL
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.calculateInitialDelay
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.calculateNextExecutionTime
+import infrastructure.CommandProcessor
+import infrastructure.ScriptRequestHandler
+import infrastructure.URL
+import infrastructure.calculateInitialDelay
+import infrastructure.calculateNextExecutionTime
 import kotlinx.datetime.Clock
 import java.util.concurrent.TimeUnit
 
@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit
  * @param scripHandler The handler for executing analysis scripts asynchronously.
  */
 class ScheduledTaskServiceHost
-(
+    (
     private val analysisResultsService: AnalysisResultsService,
     private val scheduledTaskRepository: ScheduledTaskRepository,
     private val uuidFactory: UUIDFactory = DefaultUUIDFactory,
@@ -58,7 +58,7 @@ class ScheduledTaskServiceHost
      * @return The status of the created task (TaskStatus.Created).
      */
     suspend fun createTask
-    (
+                (
         name: String,
         initialDelay: Long,
         delay: Long,
@@ -92,7 +92,7 @@ class ScheduledTaskServiceHost
         val task = scheduledTaskRepository.getTaskById(id)
         requireNotNull(task)
         val command = ScheduledTaskExecutorCommand(analysisResultsService, scheduledTaskRepository, scripHandler, task)
-        schedule(id, command, task.initialDelay, task.delay, task.timeUnit)
+        schedule(id, task.name, command, task.initialDelay, task.delay, task.timeUnit)
         scheduledTaskRepository.updateTaskStatus(id, TaskStatus.Running)
         return TaskStatus.Running
     }
@@ -147,9 +147,9 @@ class ScheduledTaskServiceHost
     }
 
 
-    private fun schedule(taskId: UUID, command: Command.Scheduled, initialDelay: Long, delay: Long, timeUnit: TimeUnit)
+    private fun schedule(taskId: UUID, taskName: String, command: Command.Scheduled, initialDelay: Long, delay: Long, timeUnit: TimeUnit)
     {
-        CommandProcessor.processScheduledTask(taskId, command, initialDelay, delay, timeUnit)
+        CommandProcessor.processScheduledTask(taskId, taskName, command, initialDelay, delay, timeUnit)
     }
 
     private fun cancelScheduledTask(taskId: UUID) = CommandProcessor.cancelScheduledTask(taskId)
@@ -157,7 +157,7 @@ class ScheduledTaskServiceHost
     private fun restartTask(task: TaskSettings.Scheduled, initialDelay: Long)
     {
         val command = ScheduledTaskExecutorCommand(analysisResultsService, scheduledTaskRepository, scripHandler, task)
-        schedule(task.id, command, initialDelay, task.delay, task.timeUnit)
+        schedule(task.id, task.name, command, initialDelay, task.delay, task.timeUnit)
     }
 
 }

@@ -1,4 +1,4 @@
-package dk.cachet.carp.webservices.analysis_lib.application
+package application
 
 import dk.cachet.carp.common.application.UUID
 import dk.cachet.carp.common.application.services.ApiVersion

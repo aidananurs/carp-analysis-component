@@ -1,4 +1,4 @@
-package dk.cachet.carp.webservices.analysis_lib.application
+package application
 
 import dk.cachet.carp.common.application.DefaultUUIDFactory
 import dk.cachet.carp.common.application.UUID
@@ -7,9 +7,9 @@ import dk.cachet.carp.common.application.services.ApplicationService
 import dk.cachet.carp.common.application.services.ApplicationServiceEventBus
 import dk.cachet.carp.common.application.services.IntegrationEvent
 import dk.cachet.carp.webservices.analysis_lib.domain.*
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.CommandProcessor
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.ScriptRequestHandler
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.URL
+import infrastructure.CommandProcessor
+import infrastructure.ScriptRequestHandler
+import infrastructure.URL
 import kotlinx.datetime.Clock
 
 /**

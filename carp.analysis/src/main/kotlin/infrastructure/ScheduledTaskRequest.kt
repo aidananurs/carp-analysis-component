@@ -1,4 +1,4 @@
-package dk.cachet.carp.webservices.analysis_lib.infrastructure
+package infrastructure
 
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable

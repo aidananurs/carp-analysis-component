@@ -1,10 +1,10 @@
 package dk.cachet.carp.webservices.analysis_lib.domain
 
 import dk.cachet.carp.common.infrastructure.serialization.JSON
-import dk.cachet.carp.webservices.analysis_lib.application.AnalysisResultsService
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.ScheduledTaskRequest
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.ScriptRequestHandler
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.ScriptResult
+import application.AnalysisResultsService
+import infrastructure.ScheduledTaskRequest
+import infrastructure.ScriptRequestHandler
+import infrastructure.ScriptResult
 import kotlinx.datetime.Clock
 import kotlinx.serialization.encodeToString
 import org.apache.logging.log4j.LogManager

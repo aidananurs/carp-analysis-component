@@ -3,8 +3,8 @@ package dk.cachet.carp.webservices.analysis_lib.domain
 import dk.cachet.carp.common.application.UUID
 import dk.cachet.carp.common.application.services.ApplicationService
 import dk.cachet.carp.common.application.services.IntegrationEvent
-import dk.cachet.carp.webservices.analysis_lib.application.TaskStatus
-import dk.cachet.carp.webservices.analysis_lib.infrastructure.URL
+import application.TaskStatus
+import infrastructure.URL
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 import java.util.concurrent.TimeUnit
